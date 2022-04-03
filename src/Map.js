@@ -3,6 +3,8 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import {useFonts} from 'expo-font';
 import FetchApi from "./components/FetchApi";
+import MapView, { Marker } from "react-native-maps";
+import { SafeAreaView } from "react-native-web";
 // import { Button, SafeAreaView } from "react-native-web";
 
 
@@ -42,10 +44,28 @@ export default function About({navigation}) {
 
     <ScrollView style={styles.main}>
 
-                        <Button title='changer' onPress={pressHandler}/>
-                        
+        <Button title='changer' onPress={pressHandler}/>
+        
+        <MapView style={styles.map}
+        initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+        }}
+        >
+            {/* <Marker
+            coordinate={{
+                latitude: 37.78825,
+                longitude: -122.4324
+            }}
 
-                        
+            pinColor="black"
+
+            
+             /> */}
+        </MapView>
+
 
     </ScrollView>
    
@@ -85,6 +105,9 @@ const styles = StyleSheet.create({
   main:{
     top : 0,
     padding : 20,
+    width: '100%',
+    height: '100%',
+    flex: 1,
     
 
   },
@@ -128,5 +151,9 @@ const styles = StyleSheet.create({
     fontSize : 20,
 
   },
+  map:{
+      width: '100%',
+      height: '100%'
+  }
   
 });

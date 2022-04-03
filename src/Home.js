@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import {useFonts} from 'expo-font';
-import {Navigator} from "../App";
+// import {Navigator} from "../App";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import { Button, SafeAreaView } from "react-native-web";
