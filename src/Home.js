@@ -22,6 +22,14 @@ export default function Home({navigation}) {
     navigation.navigate('About');
   }
 
+  const pressQuiz = () => {
+    navigation.navigate('Quiz');
+  }
+
+  const pressMap = () => {
+    navigation.navigate('Map');
+  }
+
   if (!fontLoaded) {
     return null;
   };
@@ -66,7 +74,7 @@ export default function Home({navigation}) {
                               source={require('./logo_img/mer.png')}/>
                           </View>
                           <View style={styles.txt}>
-                            <Text style={styles.articles}>Jeu</Text>
+                          <Button style={styles.articles} onPress={pressMap} title='Carte'/>
                           </View>
                         </View>
                         <View style={styles.block}>
@@ -74,8 +82,8 @@ export default function Home({navigation}) {
                               <Image style={styles.img}
                               source={require('./logo_img/mer.png')}/>
                           </View>
-                          <View style={styles.txt}>
-                            <Text style={styles.articles}>Quizes</Text>
+                          <View style={styles.txt} >
+                            <Button style={styles.articles} onPress={pressQuiz} title='Quizes'/>
                           </View>
                         </View>
                         

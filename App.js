@@ -5,6 +5,8 @@ import React from "react";
 
 import About from "./src/About";
 import Home from "./src/Home";
+import Quiz from "./src/Quiz";
+import Map from "./src/Map";
 
 
 export default function App() {
@@ -19,6 +21,8 @@ export default function App() {
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
+        <Stack.Screen name="Map" component={Map} />
+        <Stack.Screen name="Quiz" component={Quiz} />
       </Stack.Navigator>
     
     </NavigationContainer>

@@ -43,7 +43,9 @@ export default function About({navigation}) {
     <ScrollView style={styles.main}>
 
                         <Button title='changer' onPress={pressHandler}/>
-                        <FetchApi table={'texte'} id={1} texte={true}/>
+                        
+
+                        
 
     </ScrollView>
    

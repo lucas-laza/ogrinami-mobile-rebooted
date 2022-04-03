@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import {useFonts} from 'expo-font';
@@ -7,7 +7,7 @@ import FetchApi from "./components/FetchApi";
 
 
 
-export default function About({navigation}) {
+export default function Quiz({navigation}) {
   const [fontLoaded] = useFonts({
     AtmaS: require("../assets/fonts/Atma-SemiBold.ttf"),
     "AtmaB": require("../assets/fonts/Atma-Bold.ttf"),
@@ -16,6 +16,22 @@ export default function About({navigation}) {
   const pressHandler = () => {
     navigation.navigate('Home');
   }
+
+  const [quiz, setQuiz] = useState([]);
+  useEffect(() => {
+    fetch(`http://www.json.ogrinami.com/ogrimobile.php?table=quiz&id=1`)
+    .then(function(response) {
+        // console.log(response);
+        response.json().then(e=>{
+            setQuiz(e);
+
+            console.log(quiz);
+    
+        })
+    })
+  }, []);
+
+  
 
   if (!fontLoaded) {
     return null;
@@ -42,8 +58,21 @@ export default function About({navigation}) {
 
     <ScrollView style={styles.main}>
 
-                        <Button title='changer' onPress={pressHandler}/>
-                        <FetchApi table={'texte'} id={1} texte={true}/>
+        <Button   title='Retour' onPress={pressHandler}/>
+
+        <View>
+            {/* <FetchApi id={quiz.ext_start} table='texte' texte={true} /> */}
+            <FetchApi id={3} table='texte' texte={true} />
+        </View>
+
+        <View>
+            {/* <FetchApi id={quiz.ext_contenu} table='texte' texte={true} /> */}
+            <FetchApi id={4} table='texte' texte={true} />
+        </View>
+
+        <View>
+            <Button title="Commencer" />
+        </View>
 
     </ScrollView>
    
