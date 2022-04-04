@@ -1,38 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import {useFonts} from 'expo-font';
-// import {Navigator} from "../App";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import FetchApi from "./components/FetchApi";
 // import { Button, SafeAreaView } from "react-native-web";
 
 
 
-export default function Home({navigation}) {
-
-
-
+export default function Quiz({navigation}) {
   const [fontLoaded] = useFonts({
     AtmaS: require("../assets/fonts/Atma-SemiBold.ttf"),
     "AtmaB": require("../assets/fonts/Atma-Bold.ttf"),
   });
 
   const pressHandler = () => {
-    navigation.navigate('About');
+    navigation.navigate('Home');
   }
 
-  const pressQuiz = () => {
-    navigation.navigate('Quiz');
-  }
+  const [quiz, setQuiz] = useState([]);
+  useEffect(() => {
+    fetch(`http://www.json.ogrinami.com/ogrimobile.php?table=quiz&id=1`)
+    .then(function(response) {
+        // console.log(response);
+        response.json().then(e=>{
+            setQuiz(e);
 
-  const pressMap = () => {
-    navigation.navigate('Map');
-  }
+            console.log(quiz);
+    
+        })
+    })
+  }, []);
 
-  const pressC = () => {
-    navigation.navigate('Contact');
-  }
+  
 
   if (!fontLoaded) {
     return null;
@@ -59,43 +58,21 @@ export default function Home({navigation}) {
 
     <ScrollView style={styles.main}>
 
-                    <Image
-                    style={styles.planet}
-                    source={require('./logo_img/planet.png')}/>
-                  
-                        <View style={styles.block}>
-                          <View >
-                              <Image style={styles.img}
-                              source={require('./logo_img/mer.png')}/>
-                          </View>
-                          <View style={styles.txt}>
-                          <Button style={styles.articles} onPress={pressC} title='Contact'/>
-                          </View>
-                        </View>
-                        <View style={styles.block}>
-                          <View >
-                              <Image style={styles.img}
-                              source={require('./logo_img/mer.png')}/>
-                          </View>
-                          <View style={styles.txt}>
-                          <Button style={styles.articles} onPress={pressMap} title='Carte'/>
-                          </View>
-                        </View>
-                        <View style={styles.block}>
-                          <View >
-                              <Image style={styles.img}
-                              source={require('./logo_img/mer.png')}/>
-                          </View>
-                          <View style={styles.txt} >
-                            <Button style={styles.articles} onPress={pressQuiz} title='Quizes'/>
-                          </View>
-                        </View>
-                        
-            
-                    
+        <Button   title='Retour' onPress={pressHandler}/>
 
+        <View>
+            {/* <FetchApi id={quiz.ext_start} table='texte' texte={true} /> */}
+            <FetchApi id={3} table='texte' texte={true} />
+        </View>
 
-                        <Button   title='changer' onPress={pressHandler}/>
+        <View>
+            {/* <FetchApi id={quiz.ext_contenu} table='texte' texte={true} /> */}
+            <FetchApi id={4} table='texte' texte={true} />
+        </View>
+
+        <View>
+            <Button title="Commencer" />
+        </View>
 
     </ScrollView>
    
