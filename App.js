@@ -7,6 +7,7 @@ import About from "./src/About";
 import Home from "./src/Home";
 import Quiz from "./src/Quiz";
 import Map from "./src/Map";
+// import Contact from "./src/Contact";
 
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
         <Stack.Screen name="About" component={About} />
         <Stack.Screen name="Map" component={Map} />
         <Stack.Screen name="Quiz" component={Quiz} />
+        {/* <Stack.Screen name="Contact" component={Contact} /> */}
       </Stack.Navigator>
     
     </NavigationContainer>

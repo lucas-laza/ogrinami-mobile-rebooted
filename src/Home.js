@@ -30,6 +30,10 @@ export default function Home({navigation}) {
     navigation.navigate('Map');
   }
 
+  const pressC = () => {
+    navigation.navigate('Contact');
+  }
+
   if (!fontLoaded) {
     return null;
   };
@@ -65,7 +69,7 @@ export default function Home({navigation}) {
                               source={require('./logo_img/mer.png')}/>
                           </View>
                           <View style={styles.txt}>
-                            <Text style={styles.articles}>Articles</Text>
+                          <Button style={styles.articles} onPress={pressC} title='Contact'/>
                           </View>
                         </View>
                         <View style={styles.block}>
