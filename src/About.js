@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import {useFonts} from 'expo-font';
+import FetchApi from "./components/FetchApi";
 // import { Button, SafeAreaView } from "react-native-web";
 
 
@@ -41,7 +42,8 @@ export default function About({navigation}) {
 
     <ScrollView style={styles.main}>
 
-                        <Button   title='changer' onPress={pressHandler}/>
+                        <Button title='changer' onPress={pressHandler}/>
+                        <FetchApi table={'texte'} id={1} texte={true}/>
 
     </ScrollView>
    

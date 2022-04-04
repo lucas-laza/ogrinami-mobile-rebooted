@@ -2,36 +2,21 @@ import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, ScrollView, Button } from 'react-native';
 import {useFonts} from 'expo-font';
-// import {Navigator} from "../App";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import FetchApi from "./components/FetchApi";
+import MapView, { Marker } from "react-native-maps";
+import { SafeAreaView } from "react-native-web";
 // import { Button, SafeAreaView } from "react-native-web";
 
 
 
-export default function Home({navigation}) {
-
-
-
+export default function About({navigation}) {
   const [fontLoaded] = useFonts({
     AtmaS: require("../assets/fonts/Atma-SemiBold.ttf"),
     "AtmaB": require("../assets/fonts/Atma-Bold.ttf"),
   });
 
   const pressHandler = () => {
-    navigation.navigate('About');
-  }
-
-  const pressQuiz = () => {
-    navigation.navigate('Quiz');
-  }
-
-  const pressMap = () => {
-    navigation.navigate('Map');
-  }
-
-  const pressC = () => {
-    navigation.navigate('Contact');
+    navigation.navigate('Home');
   }
 
   if (!fontLoaded) {
@@ -59,43 +44,28 @@ export default function Home({navigation}) {
 
     <ScrollView style={styles.main}>
 
-                    <Image
-                    style={styles.planet}
-                    source={require('./logo_img/planet.png')}/>
-                  
-                        <View style={styles.block}>
-                          <View >
-                              <Image style={styles.img}
-                              source={require('./logo_img/mer.png')}/>
-                          </View>
-                          <View style={styles.txt}>
-                          <Button style={styles.articles} onPress={pressC} title='Contact'/>
-                          </View>
-                        </View>
-                        <View style={styles.block}>
-                          <View >
-                              <Image style={styles.img}
-                              source={require('./logo_img/mer.png')}/>
-                          </View>
-                          <View style={styles.txt}>
-                          <Button style={styles.articles} onPress={pressMap} title='Carte'/>
-                          </View>
-                        </View>
-                        <View style={styles.block}>
-                          <View >
-                              <Image style={styles.img}
-                              source={require('./logo_img/mer.png')}/>
-                          </View>
-                          <View style={styles.txt} >
-                            <Button style={styles.articles} onPress={pressQuiz} title='Quizes'/>
-                          </View>
-                        </View>
-                        
+        <Button title='changer' onPress={pressHandler}/>
+        
+        <MapView style={styles.map}
+        initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+        }}
+        >
+            {/* <Marker
+            coordinate={{
+                latitude: 37.78825,
+                longitude: -122.4324
+            }}
+
+            pinColor="black"
+
             
-                    
+             /> */}
+        </MapView>
 
-
-                        <Button   title='changer' onPress={pressHandler}/>
 
     </ScrollView>
    
@@ -135,6 +105,9 @@ const styles = StyleSheet.create({
   main:{
     top : 0,
     padding : 20,
+    width: '100%',
+    height: '100%',
+    flex: 1,
     
 
   },
@@ -178,5 +151,9 @@ const styles = StyleSheet.create({
     fontSize : 20,
 
   },
+  map:{
+      width: '100%',
+      height: '100%'
+  }
   
 });

@@ -10,6 +10,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "@react-google-maps/api": "^2.8.0",
+    "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.1",
     "expo": "^42.0.0",
@@ -17,11 +20,17 @@
     "react": "^17.0.1",
     "react-app-rewired": "^2.2.1",
     "react-dom": "17.0.1",
-    "react-native": "^0.64.3",
+    "react-freeze": "^1.0.0",
+    "react-native": "^0.63.4",
+    "react-native-gesture-handler": "~1.10.2",
+    "react-native-maps": "0.28.0",
+    "react-native-reanimated": "~2.2.0",
+    "react-native-safe-area-context": "3.2.0",
+    "react-native-screens": "~3.4.0",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.17.8",
     "babel-plugin-module-resolver": "^4.1.0"
   },
   "private": true
